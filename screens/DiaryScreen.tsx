@@ -1,61 +1,48 @@
 import { View, Button } from 'react-native'
+import {RootStackParamList} from '../App';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../App';
 import DiaryEntry from '../components/DiaryEntry';
 
 export type NavigationProp = NativeStackNavigationProp<
   RootStackParamList,
-  'Home'
+  'DiaryScreen'
 >;
 
-const HomeScreen = () => {
+const DiaryScreen = () => {
   const navigation = useNavigation<NavigationProp>();
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <DiaryEntry
-        title="My First Entry"
-        date="May 21, 2023"
+        title="My Diary Entry"
+        date="May 22, 2023"
         content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consequat ex vitae nisl venenatis scelerisque."
       />
-
-      <Button
-        title="Go to Diary"
-        onPress={() => navigation.navigate('DiaryScreen')}
-      />
+      <Button title="Home" onPress={()=>navigation.navigate('Home')}/>
     </View>
   );
 };
 
+export default DiaryScreen
 
-
-export default HomeScreen;
-
-
-// import {View, Text, SafeAreaView} from 'react-native';
+// import {View, Text} from 'react-native';
 // import React from 'react';
 // import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 // import {RootStackParamList} from '../App';
-// import {useNavigation} from '@react-navigation/native';
 
 // type Props = {};
 
 // export type NavigationProp = NativeStackNavigationProp<
 //   RootStackParamList,
-//   'Home'
+//   'screen2'
 // >;
 
-// const Home = (props: Props) => {
-//   const navigation = useNavigation<NavigationProp>();
+// const DiaryDetails = (props: Props) => {
 //   return (
-//     <SafeAreaView className="flex flex-row justify-center md:flex-col ">
-//       <Text
-//         className="text-customcolor"
-//         onPress={() => navigation.navigate('Diary')}>
-//         Hello world
-//       </Text>
-//     </SafeAreaView>
+//     <View>
+//       <Text>DiaryDetails</Text>
+//     </View>
 //   );
 // };
 
-// export default Home;
+// export default DiaryDetails;
