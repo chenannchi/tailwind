@@ -1,4 +1,4 @@
-import { View, Button } from 'react-native'
+import { View, Button, Text, Pressable } from 'react-native'
 import {RootStackParamList} from '../App';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
@@ -18,7 +18,11 @@ const DiaryScreen = () => {
         date="May 22, 2023"
         content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consequat ex vitae nisl venenatis scelerisque."
       />
-      <Button title="Home" onPress={()=>navigation.navigate('Home')}/>
+      <Pressable onPress={()=>navigation.navigate('Home')} className='bg-black'>
+        <Text className='text-white p-2'>
+          Home
+        </Text>
+      </Pressable>
     </View>
   );
 };

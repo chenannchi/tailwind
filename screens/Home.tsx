@@ -1,8 +1,9 @@
-import { View, Button } from 'react-native'
-import {useNavigation} from '@react-navigation/native';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../App';
+import { View, Text, Pressable } from 'react-native'
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../App';
 import DiaryEntry from '../components/DiaryEntry';
+import { useState } from 'react'
 
 export type NavigationProp = NativeStackNavigationProp<
   RootStackParamList,
@@ -10,19 +11,33 @@ export type NavigationProp = NativeStackNavigationProp<
 >;
 
 const HomeScreen = () => {
+  const [isDarkMode, setDarkMode] = useState(false);
+
+  const toggleDarkMode = () => {
+    setDarkMode(!isDarkMode);
+  };
+
   const navigation = useNavigation<NavigationProp>();
+
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }} className={isDarkMode ? 'bg-black' : 'bg-white'}>
+      <Pressable onPress={() => toggleDarkMode()} className={isDarkMode ? 'bg-white p-2' : 'bg-black p-2'}>
+        <Text className={isDarkMode ? 'text-black' : 'text-white'}>
+          Mode
+        </Text>
+      </Pressable>
       <DiaryEntry
         title="My First Entry"
         date="May 21, 2023"
         content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consequat ex vitae nisl venenatis scelerisque."
       />
 
-      <Button
-        title="Go to Diary"
-        onPress={() => navigation.navigate('DiaryScreen')}
-      />
+      <Pressable onPress={() => navigation.navigate('DiaryScreen')} className={isDarkMode ? 'bg-white p-2' : 'bg-black p-2'}>
+        <Text className={isDarkMode ? 'text-black' : 'text-white'}>
+          Go to Diary
+        </Text>
+      </Pressable>
+
     </View>
   );
 };
