@@ -10,12 +10,12 @@ export type NavigationProp = NativeStackNavigationProp<
   'Screen2'
 >;
 
-const Screen2 = (props: Props) => {
+const DiaryDetails = (props: Props) => {
   return (
     <View>
-      <Text>Screen2</Text>
+      <Text>DiaryDetails</Text>
     </View>
   );
 };
 
-export default Screen2;
+export default DiaryDetails;
